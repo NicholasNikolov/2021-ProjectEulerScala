@@ -3,14 +3,10 @@ import scala.collection.immutable.Range
 //Find the sum of all the multiples of 3 or 5 below 1000.
 
 object Euler extends App{
-  //  def main(args: Array[String])
-  //  {
 
   println("Executing Euler Code")
   val output = natural_number_multiples(1000)
   print(output)
-
-  //  }
 
   def natural_number_multiples( multipleValue : Int) : Int = {
     import scala.collection.mutable.ListBuffer
