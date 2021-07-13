@@ -14,6 +14,8 @@ object Euler extends App{
   println(output2)
   //  }
 
+  val output3 = compositeFinder(600851475143L,200)
+
 
   def natural_number_multiples( multipleValue : Int) : Int = {
     println("Running natural_number_multiples")
@@ -73,6 +75,40 @@ object Euler extends App{
     return fibSummation
 
   }
+
+  def gcd(a: Int, b: Int): Int =
+    if (b == 0) a else gcd(b, a % b)
+
+  def compositeFinder(composite : Long , iterLimit : Int) : ListBuffer[Int] =
+    {
+/*      The prime factors of 13195 are 5, 7, 13 and 29.
+      What is the largest prime factor of the number 600851475143 ?*/
+
+      var x = 2 : Long
+      var y = 2 : Long
+      var d = 1 : Long
+
+      var factorList = ListBuffer()
+      var iteration = 0
+      while(iteration < iterLimit){
+        x = (x*x + 1)%composite
+        y = (y*y + 1)%composite
+        d = gcd((x-y).abs,composite)
+
+        if(d != 1 && d != composite && !factorList.contains(d)){
+          factorList += d
+        }
+        iteration += 1
+      }
+
+      return factorList
+
+
+
+
+
+
+    }
 
 
 }
